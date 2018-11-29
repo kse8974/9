@@ -8,7 +8,7 @@ int is_whitespace(char c)
 	if( c ==' ' ||
 		c =='\t'||
 		c =='\n'||
-		c =='r'||
+		c =='\r'||
 		c =='(') 
 	return 1; //공백글자다
 	
@@ -18,7 +18,7 @@ int is_whitespace(char c)
 int fget_word(FILE*fp, char*word)
 {
 	char c;
-	while(c=fgetc(fp) != EOF){			//1문자 받음 
+	while((c=fgetc(fp)) != EOF){			//1문자 받음 
 		if(is_whitespace(c)==0)
 		break;							//유의미한 문자이면 나감 
 	}
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	//word reading
-	while(fget_word(fp, word) !=0)
+	while(fget_word(fp, word) != 0)
 	{
 		//word processing
 		printf("%s \n", word); 			//test code	
